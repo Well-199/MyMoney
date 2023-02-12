@@ -2,4 +2,6 @@
 
 #### npx react-native run-android
 
-#### Navegando entre as telas
+#### Criando as primeiras Props nos Componentes
+
+#### https://class.devsamurai.com.br/lectures/224

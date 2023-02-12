@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Button, StyleSheet } from 'react-native'
+import { Picker } from '@react-native-picker/picker'
 
 import BalanceLabel from '../../components/BalanceLabel'
 import EntrySummary from '../../components/EntrySummary'
@@ -11,10 +12,21 @@ const Report = () =>  {
         <View>
             <BalanceLabel />
 
-            <View>
-                <Button title='Todas as Categorias'/>
-                <Button title='Últimos 7 dias'/>
-            </View>
+            <Picker
+                selectedValue={''}
+                onValueChange={(itemValue, itemIndex) =>
+                setSelectedLanguage(itemValue)
+            }>
+                <Picker.Item label="Todas as Categorias" value="Todas" />
+            </Picker>
+
+            <Picker
+                selectedValue={''}
+                onValueChange={(itemValue, itemIndex) =>
+                setSelectedLanguage(itemValue)
+            }>
+                <Picker.Item label="Últimos 7 dias" value="7dias" />
+            </Picker>
 
             <EntrySummary />
             <EntryList />
