@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Criando o formulário de entrada de lançamentos
+#### Listando todos os lançamentos
 
-#### https://class.devsamurai.com.br/lectures/224
+#### https://class.devsamurai.com.br/lectures/235
