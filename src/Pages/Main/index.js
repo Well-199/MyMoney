@@ -7,9 +7,11 @@ import EntryList from "../../components/EntryList"
 
 const Main = ({ navigation }) => {
 
+    const currentBalance = 2064.34
+
     return(
         <View style={styles.container}>
-            <BalancePanel />
+            <BalancePanel currentBalance={currentBalance}/>
             <Button 
                 onPress={() => navigation.navigate("NewEntry") } 
                 title='Adicionar' 
