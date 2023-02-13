@@ -1,9 +1,24 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { View, Text, FlatList, StyleSheet  } from 'react-native'
 
 import EntryListItem from "./EntryListItem"
+import { getEntries } from "../../services/Entries"
 
-const EntryList = ({ entries }) => {
+const EntryList = () => {
+
+    const [entries, setEntries] = useState([])
+
+    useEffect(() => {
+
+        async function loadEntries() {
+            const data = await getEntries()
+            setEntries(data)
+            console.log(data)
+        }
+
+        loadEntries()
+
+    }, [])
 
     return(
         <View style={styles.container}>
@@ -11,9 +26,10 @@ const EntryList = ({ entries }) => {
 
             <FlatList
                 data={entries}
+                keyExtractor={ item => JSON.stringify(item.id)}
                 renderItem={({ item }) => (
                     <Text>{ item.description } {
-                        Number(item.amount).toLocaleString('pt-BR', 
+                        Number().toLocaleString('pt-BR', 
                         {style: 'currency', currency: 'BRL'})
                     }</Text> 
                 )}

@@ -1,6 +1,17 @@
 import { Alert } from "react-native"
 import { getRealm } from "./Realm"
 
+export const getEntries = async () => {
+
+    // Inicia a conexão com o banco
+    const realm = await getRealm()
+
+    // entries armazena os dados da tabela entry retornados do BD
+    const entries = realm.objects('Entry')
+
+    return entries
+}
+
 export const saveEntry = async ( value ) => {
 
     // Inicia a conexão com o banco
@@ -14,7 +25,7 @@ export const saveEntry = async ( value ) => {
         realm.write(() => {
 
             data = {
-                id: "ABC",
+                id: "ABCD",
                 amount: amount,
                 entryAt: new Date(),
                 isInit: false

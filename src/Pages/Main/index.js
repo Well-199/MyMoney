@@ -17,12 +17,6 @@ const Main = ({ navigation }) => {
         { key: '5', description: "Outros: ", amount: 1200}
     ]
 
-    const entries = [
-        { key: '1', description: "Padaria Asa Branca: ", amount: 10},
-        { key: '2', description: "Supermercado Isadora: ", amount: 190},
-        { key: '3', description: "Posto Ipiranga: ", amount: 120}
-    ]
-
     return(
         <View style={styles.container}>
             <BalancePanel currentBalance={currentBalance}/>
@@ -31,7 +25,7 @@ const Main = ({ navigation }) => {
                 title='Adicionar' 
             />
             <EntrySummary entriesGrouped={entriesGrouped}/>
-            <EntryList entries={entries}/>
+            <EntryList />
         </View>
     )
 }
