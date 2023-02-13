@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Criando o serviço de inserção de dados
+#### Criando o formulário de entrada de lançamentos
 
 #### https://class.devsamurai.com.br/lectures/224
