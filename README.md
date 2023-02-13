@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Criando as primeiras Props nos Componentes
+#### Criando o serviço de inserção de dados
 
 #### https://class.devsamurai.com.br/lectures/224

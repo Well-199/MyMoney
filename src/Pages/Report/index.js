@@ -8,9 +8,11 @@ import EntryList from '../../components/EntryList'
 
 const Report = () =>  {
 
+    const currentBalance = 2064.34
+
     return (
         <View>
-            <BalanceLabel />
+            <BalanceLabel currentBalance={currentBalance} />
 
             <Picker
                 selectedValue={''}
