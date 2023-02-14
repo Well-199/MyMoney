@@ -1,6 +1,8 @@
 import { Alert } from "react-native"
 import { getRealm } from "./Realm"
 
+import { v4 as uuid } from 'uuid'
+
 export const getEntries = async () => {
 
     // Inicia a conexão com o banco
@@ -12,12 +14,11 @@ export const getEntries = async () => {
     return entries
 }
 
-export const saveEntry = async ( value ) => {
+export const saveEntry = async ( value, entry = {} ) => {
 
     // Inicia a conexão com o banco
     const realm = await getRealm()
     let data = {}
-    const { amount } = value
 
     try {
 
@@ -25,9 +26,9 @@ export const saveEntry = async ( value ) => {
         realm.write(() => {
 
             data = {
-                id: "ABCD",
-                amount: amount,
-                entryAt: new Date(),
+                id: value.id || entry.id || uuid(),
+                amount: value.amount || entry.amount,
+                entryAt: value.entryAt || entry.entryAt,
                 isInit: false
             }
             // parametro true sempre checa se os dados existem caso sim atualiza

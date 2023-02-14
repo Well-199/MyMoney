@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { View, Text, FlatList, StyleSheet  } from 'react-native'
+import { View, Text, FlatList, Button, StyleSheet  } from 'react-native'
 
 import EntryListItem from "./EntryListItem"
 import { getEntries } from "../../services/Entries"
 
-const EntryList = () => {
+const EntryList = ({ navigation }) => {
 
     const [entries, setEntries] = useState([])
 
@@ -13,9 +13,8 @@ const EntryList = () => {
         async function loadEntries() {
             const data = await getEntries()
             setEntries(data)
-            console.log(data)
         }
-
+      
         loadEntries()
 
     }, [])
@@ -24,16 +23,21 @@ const EntryList = () => {
         <View style={styles.container}>
             <Text style={styles.title}>Últimos Lançamentos</Text>
 
-            <FlatList
-                data={entries}
-                keyExtractor={ item => JSON.stringify(item.id)}
-                renderItem={({ item }) => (
+            {entries.map(item =>
+                <View key={item.id}>
                     <Text>{ item.description } {
-                        Number().toLocaleString('pt-BR', 
+                        Number(item.amount).toLocaleString('pt-BR', 
                         {style: 'currency', currency: 'BRL'})
                     }</Text> 
-                )}
-            ></FlatList>
+                    <Button 
+                        title={item.id}
+                        onPress={() => {
+                            navigation.navigate("NewEntry", {entry: item})
+                        }}
+                    />
+                </View>
+            )}
+          
         </View>
     )
 }

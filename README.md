@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Editando dados de um lançamento
+#### Excluindo os lançamentos
 
-#### https://class.devsamurai.com.br/lectures/236
+#### https://class.devsamurai.com.br/lectures/237

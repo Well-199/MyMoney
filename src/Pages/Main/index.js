@@ -25,7 +25,7 @@ const Main = ({ navigation }) => {
                 title='Adicionar' 
             />
             <EntrySummary entriesGrouped={entriesGrouped}/>
-            <EntryList />
+            <EntryList navigation={navigation}/>
         </View>
     )
 }
