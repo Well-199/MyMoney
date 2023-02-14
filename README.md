@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Excluindo os lançamentos
+#### Validando as entradas de dados
 
-#### https://class.devsamurai.com.br/lectures/237
+#### https://class.devsamurai.com.br/lectures/238

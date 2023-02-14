@@ -45,3 +45,17 @@ export const saveEntry = async ( value, entry = {} ) => {
     }
 
 }
+
+export const deleteEntry = async (entry) => {
+    // Inicia a conexão com o banco
+    const realm = await getRealm()
+
+    try {
+        realm.write(() => {
+            realm.delete(entry)
+        })
+    } catch (error) {
+        console.error("deleteEntry: ", error)
+        Alert.alert("Erro ao excluir lançamento")
+    }
+}

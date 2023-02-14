@@ -4,7 +4,7 @@ import { View, TextInput, Button, StyleSheet } from 'react-native'
 import moment from "moment"
 
 import BalanceLabel from "../../components/BalanceLabel"
-import { saveEntry } from "../../services/Entries"
+import { saveEntry, deleteEntry } from "../../services/Entries"
 
 const NewEntry = ({ navigation, route }) => {
 
@@ -20,18 +20,23 @@ const NewEntry = ({ navigation, route }) => {
     const [amount, setAmount] = useState(`${entry.amount}`)
     
     console.log(entry)
-    console.log(moment().format())
 
-    const save = () => {
-
+    const onSave = () => {
         const value = {
             amount: parseFloat(amount)
         }
-        
-        console.log("NewEntry :: save ", amount)
 
         saveEntry(value, entry)
-        navigation.navigate("Main")
+        onClose()
+    }
+
+    const onDelete = () => {
+        deleteEntry(entry)
+        onClose()
+    }
+
+    const onClose = () => {
+        navigation.goBack()
     }
 
     return(
@@ -53,11 +58,15 @@ const NewEntry = ({ navigation, route }) => {
             <View>
                 <Button 
                     title="Adicionar" 
-                    onPress={save}
+                    onPress={onSave}
+                />
+                <Button 
+                    title="Excluir" 
+                    onPress={onDelete}
                 />
                 <Button 
                     title="Cancelar"
-                    onPress={() => navigation.goBack()} 
+                    onPress={onClose} 
                 />
             </View>
         </View>

@@ -17,11 +17,37 @@ const EntryList = ({ navigation }) => {
       
         loadEntries()
 
-    }, [])
+        // Atualiza a tela sempre que recebe o foco
+        const unsubscribe = navigation.addListener('focus', () => {
+            loadEntries()
+        })
+        return unsubscribe
+
+    }, [navigation])
 
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Últimos Lançamentos</Text>
+
+            {/* <FlatList
+                data={entries}
+                extraData={entries}
+                keyExtractor={item => JSON.stringify(item.id)}
+                renderItem={({ item }) => (
+                    <View>
+                    <Text>{ item.description } {
+                        Number(item.amount).toLocaleString('pt-BR', 
+                        {style: 'currency', currency: 'BRL'})
+                    }</Text> 
+                    <Button 
+                        title={item.id}
+                        onPress={() => {
+                            navigation.navigate("NewEntry", {entry: item})
+                        }}
+                    />
+                </View>
+                )}
+            /> */}
 
             {entries.map(item =>
                 <View key={item.id}>
