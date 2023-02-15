@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Validando as entradas de dados
+#### Conhecendo mais de perto a UX e UI do aplicativo
 
-#### https://class.devsamurai.com.br/lectures/238
+#### https://class.devsamurai.com.br/lectures/240

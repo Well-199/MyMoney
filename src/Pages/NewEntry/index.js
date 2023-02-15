@@ -19,7 +19,12 @@ const NewEntry = ({ navigation, route }) => {
     const currentBalance = 2064.34
     const [amount, setAmount] = useState(`${entry.amount}`)
     
-    console.log(entry)
+    const isValid = () => {
+        if(parseFloat(amount) !== 0){
+            return true
+        }
+        return false
+    }
 
     const onSave = () => {
         const value = {
@@ -58,7 +63,9 @@ const NewEntry = ({ navigation, route }) => {
             <View>
                 <Button 
                     title="Adicionar" 
-                    onPress={onSave}
+                    onPress={() => {
+                        isValid() && onSave()
+                    }}
                 />
                 <Button 
                     title="Excluir" 
