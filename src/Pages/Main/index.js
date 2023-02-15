@@ -5,6 +5,8 @@ import BalancePanel from "../../components/BalancePanel"
 import EntrySummary from "../../components/EntrySummary"
 import EntryList from "../../components/EntryList"
 
+import Colors from "../../styles/Colors"
+
 const Main = ({ navigation }) => {
 
     const currentBalance = 2064.34
@@ -33,7 +35,8 @@ const Main = ({ navigation }) => {
 const styles = StyleSheet.create({
 
     container : {
-        // flex: 1,
+        flex: 1,
+        backgroundColor: Colors.background,
         padding: 10
     }
 

@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Conhecendo mais de perto a UX e UI do aplicativo
+#### Ajustando a Tela Principal (Main) - Saldo - Parte 1
 
-#### https://class.devsamurai.com.br/lectures/240
+#### https://class.devsamurai.com.br/lectures/242
