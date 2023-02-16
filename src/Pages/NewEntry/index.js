@@ -14,7 +14,7 @@ const NewEntry = ({ navigation, route }) => {
         entryAt: moment().format()
     }
 
-    const entry = (route.params?.entry ? route.params.entry : defaultParams) 
+    const entry = route.params?.entry ?? defaultParams
 
     const currentBalance = 2064.34
     const [amount, setAmount] = useState(`${entry.amount}`)
