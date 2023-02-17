@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela Principal (Main) - Resumo - Parte 2
+#### Ajustando a Tela Principal (Main) - Listagem - Parte 1
 
-#### https://class.devsamurai.com.br/lectures/245
+#### https://class.devsamurai.com.br/lectures/246
