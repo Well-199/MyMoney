@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react"
 import { View, Text, FlatList, Button, StyleSheet  } from 'react-native'
 
+import Container from "../Core/Container"
 import EntryListItem from "./EntryListItem"
 import { getEntries } from "../../services/Entries"
 
 const EntryList = ({ navigation }) => {
 
-    const [entries, setEntries] = useState([])
+    let entries = []
+
+    async function loadEntries() {
+        const data = await getEntries()
+        data.map(item => {
+            entries.push({
+                id: item.id,
+                amount: item.amount,
+                description: item.description
+            })
+        })
+    }
 
     useEffect(() => {
-
-        async function loadEntries() {
-            const data = await getEntries()
-            setEntries(data)
-        }
       
         loadEntries()
 
@@ -26,61 +33,29 @@ const EntryList = ({ navigation }) => {
     }, [navigation])
 
     return(
-        <View style={styles.container}>
-            <Text style={styles.title}>Últimos Lançamentos</Text>
+        <Container 
+            title="Últimos Lançamentos"
+            actionLabelText="Últimos 7 dias"
+            actionButtonText="Ver mais"
+            onPressActionButton={() => {}}
+        >
 
-            {/* <FlatList
+            <FlatList
                 data={entries}
                 extraData={entries}
                 keyExtractor={item => JSON.stringify(item.id)}
-                renderItem={({ item }) => (
+                renderItem={({ item }) => 
                     <View>
-                    <Text>{ item.description } {
-                        Number(item.amount).toLocaleString('pt-BR', 
-                        {style: 'currency', currency: 'BRL'})
-                    }</Text> 
-                    <Button 
-                        title={item.id}
-                        onPress={() => {
-                            navigation.navigate("NewEntry", {entry: item})
-                        }}
-                    />
-                </View>
-                )}
-            /> */}
-
-            {entries.map(item =>
-                <View key={item.id}>
-                    <Text>{ item.description } {
-                        Number(item.amount).toLocaleString('pt-BR', 
-                        {style: 'currency', currency: 'BRL'})
-                    }</Text> 
-                    <Button 
-                        title={item.id}
-                        onPress={() => {
-                            navigation.navigate("NewEntry", {entry: item})
-                        }}
-                    />
-                </View>
-            )}
+                        <Text>{ item.description } {
+                            Number(item.amount).toLocaleString('pt-BR', 
+                            {style: 'currency', currency: 'BRL'})
+                        }</Text> 
+                    </View>
+                }
+            />
           
-        </View>
+        </Container>
     )
 }
-
-const styles = StyleSheet.create({
-
-    container: {
-        // flex: 1,
-    },
-
-    title: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginTop: 10,
-        marginBottom: 10
-    }
-
-})
 
 export default EntryList
