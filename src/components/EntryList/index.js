@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { View, Text, FlatList, Button, StyleSheet  } from 'react-native'
+import { FlatList } from 'react-native'
 
 import Container from "../Core/Container"
 import EntryListItem from "./EntryListItem"
@@ -21,17 +21,9 @@ const EntryList = ({ navigation }) => {
     }
 
     useEffect(() => {
-      
         loadEntries()
-
-        // Atualiza a tela sempre que recebe o foco
-        const unsubscribe = navigation.addListener('focus', () => {
-            loadEntries()
-        })
-        return unsubscribe
-
-    }, [navigation])
-
+    }, [])
+    
     return(
         <Container 
             title="Últimos Lançamentos"
@@ -44,14 +36,13 @@ const EntryList = ({ navigation }) => {
                 data={entries}
                 extraData={entries}
                 keyExtractor={item => JSON.stringify(item.id)}
-                renderItem={({ item }) => 
-                    <View>
-                        <Text>{ item.description } {
-                            Number(item.amount).toLocaleString('pt-BR', 
-                            {style: 'currency', currency: 'BRL'})
-                        }</Text> 
-                    </View>
-                }
+                renderItem={({ item, index }) => ( 
+                    <EntryListItem 
+                        entry={item}
+                        isFirstItem={ index===0 }
+                        isLastItem={ index===entries.length - 1 }
+                    /> 
+                )}
             />
           
         </Container>
