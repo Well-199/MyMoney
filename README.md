@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela Principal (Main) - Listagem - Parte 3
+#### Ajustando a Tela de Entrada (NewEntry) - Saldo
 
-#### https://class.devsamurai.com.br/lectures/248
+#### https://class.devsamurai.com.br/lectures/249

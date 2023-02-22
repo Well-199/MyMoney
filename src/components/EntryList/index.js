@@ -5,7 +5,7 @@ import Container from "../Core/Container"
 import EntryListItem from "./EntryListItem"
 import { getEntries } from "../../services/Entries"
 
-const EntryList = ({ navigation }) => {
+const EntryList = ({ onEntryPress, onPressActionButton }) => {
 
     let entries = []
 
@@ -29,7 +29,7 @@ const EntryList = ({ navigation }) => {
             title="Últimos Lançamentos"
             actionLabelText="Últimos 7 dias"
             actionButtonText="Ver mais"
-            onPressActionButton={() => {}}
+            onPressActionButton={onPressActionButton}
         >
 
             <FlatList
@@ -41,6 +41,7 @@ const EntryList = ({ navigation }) => {
                         entry={item}
                         isFirstItem={ index===0 }
                         isLastItem={ index===entries.length - 1 }
+                        onEntryPress={onEntryPress}
                     /> 
                 )}
             />

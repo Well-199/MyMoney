@@ -6,7 +6,7 @@ import BalanceLabel from '../../components/BalanceLabel'
 import EntrySummary from '../../components/EntrySummary'
 import EntryList from '../../components/EntryList'
 
-const Report = () =>  {
+const Report = ({ navigation }) =>  {
 
     const currentBalance = 2064.34
 
@@ -35,7 +35,10 @@ const Report = () =>  {
 
             <View>
                 <Button title='Salvar'/>
-                <Button title='Cancelar'/>
+                <Button 
+                    title='Fechar' 
+                    onPress={() => navigation.goBack()}
+                />
             </View>
         </View>
     )

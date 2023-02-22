@@ -13,14 +13,14 @@ const entriesGrouped = [
     { key: '5', description: "Outros: ", amount: 1200}
 ]
 
-const EntrySummary = () => {
+const EntrySummary = ({ onPressActionButton }) => {
 
     return(
         <Container 
             title="Categorias"
             actionLabelText="Últimos 7 dias"
             actionButtonText="Ver mais"
-            onPressActionButton={() => {}}
+            onPressActionButton={onPressActionButton}
         >
             <EntrySummaryChart />
             <EntrySummaryList entriesGrouped={entriesGrouped} />
