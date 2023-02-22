@@ -4,6 +4,8 @@ import { View, TextInput, Button, StyleSheet } from 'react-native'
 import moment from "moment"
 
 import BalanceLabel from "../../components/BalanceLabel"
+import NewEntryInput from "./NewEntryInput"
+
 import { saveEntry, deleteEntry } from "../../services/Entries"
 
 import Colors from "../../styles/Colors"
@@ -50,11 +52,16 @@ const NewEntry = ({ navigation, route }) => {
             <BalanceLabel />
 
             <View>
-                <TextInput 
+                <NewEntryInput 
+                    value={amount}
+                    onChangeValue={setAmount}
+                />
+
+                {/* <TextInput 
                     style={styles.input}
                     onChangeText={(text) => setAmount(text)}
                     value={amount}
-                />
+                /> */}
                 <TextInput style={styles.input}/>
 
                 <Button title="GPS" />
