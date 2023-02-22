@@ -20,7 +20,7 @@ const NewEntry = ({ navigation, route }) => {
 
     const entry = route.params?.entry ?? defaultParams
 
-    const [amount, setAmount] = useState(`${entry.amount}`)
+    const [amount, setAmount] = useState(entry.amount)
     
     const isValid = () => {
         if(parseFloat(amount) !== 0){
@@ -57,11 +57,6 @@ const NewEntry = ({ navigation, route }) => {
                     onChangeValue={setAmount}
                 />
 
-                {/* <TextInput 
-                    style={styles.input}
-                    onChangeText={(text) => setAmount(text)}
-                    value={amount}
-                /> */}
                 <TextInput style={styles.input}/>
 
                 <Button title="GPS" />

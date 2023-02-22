@@ -79,7 +79,7 @@ const EntryListItem = ({ entry, isFirstItem, isLastItem, onEntryPress }) => {
 
 				<View style={styles.amount}>
 					<Text style={styles.amountText}>
-						{Number(10).toLocaleString('pt-BR', 
+						{Number(entry.amount).toLocaleString('pt-BR', 
 						{style: 'currency', currency: 'BRL'})}
 					</Text>
 				</View>
