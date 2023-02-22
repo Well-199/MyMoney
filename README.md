@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela de Entrada (NewEntry) - Saldo
+#### Ajustando a Tela de Entrada (NewEntry) - Valor - Parte 1
 
-#### https://class.devsamurai.com.br/lectures/249
+#### https://class.devsamurai.com.br/lectures/250

@@ -6,6 +6,8 @@ import moment from "moment"
 import BalanceLabel from "../../components/BalanceLabel"
 import { saveEntry, deleteEntry } from "../../services/Entries"
 
+import Colors from "../../styles/Colors"
+
 const NewEntry = ({ navigation, route }) => {
 
     const defaultParams = {
@@ -16,7 +18,6 @@ const NewEntry = ({ navigation, route }) => {
 
     const entry = route.params?.entry ?? defaultParams
 
-    const currentBalance = 2064.34
     const [amount, setAmount] = useState(`${entry.amount}`)
     
     const isValid = () => {
@@ -46,7 +47,7 @@ const NewEntry = ({ navigation, route }) => {
 
     return(
         <View style={styles.container}>
-            <BalanceLabel currentBalance={currentBalance} />
+            <BalanceLabel />
 
             <View>
                 <TextInput 
@@ -84,7 +85,8 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        padding: 10
+        padding: 10,
+        backgroundColor: Colors.background,
     },
 
     input: {
