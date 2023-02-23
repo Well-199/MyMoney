@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela de Entrada (NewEntry) - Categorias - Parte 2
+#### Ajustando a Tela de Entrada (NewEntry) - Categorias - Parte 3
 
-#### https://class.devsamurai.com.br/lectures/254
+#### https://class.devsamurai.com.br/lectures/255

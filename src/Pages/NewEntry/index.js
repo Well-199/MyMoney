@@ -5,6 +5,7 @@ import moment from "moment"
 
 import BalanceLabel from "../../components/BalanceLabel"
 import NewEntryInput from "./NewEntryInput"
+import NewEntryCategoryPicker from "./NewEntryCategoryPicker"
 
 import { saveEntry, deleteEntry } from "../../services/Entries"
 
@@ -57,7 +58,7 @@ const NewEntry = ({ navigation, route }) => {
                     onChangeValue={setAmount}
                 />
 
-                <TextInput style={styles.input}/>
+                <NewEntryCategoryPicker />
 
                 <Button title="GPS" />
                 <Button title="Camera" />

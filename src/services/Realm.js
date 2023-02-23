@@ -3,7 +3,7 @@ import Realm from "realm"
 import CategorySchema from "../schemas/CategorySchema"
 import EntrySchema from "../schemas/EntrySchema"
 
-import { getAllCategories } from "./Categories"
+import { getDefaultCategories } from "./Categories"
 
 // Funçao getRealm retorna a conexão com o banco de dados
 export const getRealm = async () => {
@@ -14,6 +14,8 @@ export const getRealm = async () => {
         schemaVersion: 1
     })
 
+    // dropDB
+
     // Executa a função que verifica se as categorias exustem no banco se não existir cria
     InitDB(realm)
 
@@ -21,12 +23,12 @@ export const getRealm = async () => {
     return realm
 }
 
-export function InitDB (realm) {
+export const InitDB = (realm) => {
 
     const categoriesLength = realm.objects('Category').length
 
     if(categoriesLength===0){
-        const categories = getAllCategories()
+        const categories = getDefaultCategories()
 
         try {
 
@@ -47,5 +49,11 @@ export function InitDB (realm) {
     else {
         console.log('InttDB: categories already existing... Skypping')
     }
+}
 
+// Apaga todo o banco de dados
+export const dropDB = (realm) => { 
+    realm.write(() => {
+        realm.deleteAll()
+    })
 }
