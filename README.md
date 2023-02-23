@@ -4,4 +4,4 @@
 
 #### Ajustando a Tela de Entrada (NewEntry) - Categorias - Parte 3
 
-#### https://class.devsamurai.com.br/lectures/255
+#### https://class.devsamurai.com.br/lectures/255 -> 12.37
