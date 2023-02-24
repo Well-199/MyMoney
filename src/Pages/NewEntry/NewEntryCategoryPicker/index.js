@@ -40,20 +40,23 @@ const NewEntryCategoryPicker = () => {
                         data={allCategories}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                            <TouchableOpacity>
-                                <Text>{item.name}</Text>
+                            <TouchableOpacity
+                                style={styles.modalItem}>
+                                <Text style={[styles.modalItemText, {color: item.color}]}>
+                                    {item.name}
+                                </Text>
                             </TouchableOpacity>
                         )}
                     />
+
+                    <TouchableOpacity
+                        style={styles.closeButton} 
+                        onPress={() => {
+                            setModalVisible(false)
+                        }}>
+                        <Text style={styles.closeButtonText}>Fechar</Text>
+                    </TouchableOpacity>
                 </View>
-
-                <TouchableOpacity 
-                    onPress={() => {
-                        setModalVisible(false)
-                    }}>
-                    <Text>Fechar</Text>
-                </TouchableOpacity>
-
             </Modal>
         </View>
     )
@@ -77,7 +80,40 @@ const styles = StyleSheet.create({
 
     modal: {
         flex: 1,
-        backgroundColor: Colors.asphalt,
+        backgroundColor: Colors.background,
+    },
+
+    modalItem: {
+        padding: 20,
+        borderRadius: 15,
+        marginVertical: 10,
+        marginHorizontal: 20,
+        backgroundColor: Colors.asphalt
+    },
+
+    modalItemText: {
+        fontSize: 22,
+        textAlign: 'center',
+        color: Colors.white
+    },
+
+    closeButton: {
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        borderWidth: 1,
+        alignSelf: 'center',
+        borderRadius: 15,
+        marginVertical: 10,
+        marginHorizontal: 20,
+        backgroundColor: Colors.background,
+        borderColor: Colors.green,
+        marginBottom: 20,
+    },
+
+    closeButtonText: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: Colors.green,
     }
 
 })
