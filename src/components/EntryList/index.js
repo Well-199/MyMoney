@@ -10,7 +10,6 @@ const EntryList = ({ onEntryPress, onPressActionButton }) => {
     const [entries, setEntries] = useState([])
 
     useEffect(() => {
-
         async function loadEntries() {
             const data = await getEntries()
             setEntries(data)
@@ -26,10 +25,9 @@ const EntryList = ({ onEntryPress, onPressActionButton }) => {
             actionButtonText="Ver mais"
             onPressActionButton={onPressActionButton}
         >
-
+            
             <FlatList
                 data={entries}
-                extraData={entries}
                 keyExtractor={item => JSON.stringify(item.id)}
                 renderItem={({ item, index }) => ( 
                     <EntryListItem 
