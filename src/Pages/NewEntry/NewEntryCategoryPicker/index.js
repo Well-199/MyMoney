@@ -17,7 +17,6 @@ const NewEntryCategoryPicker = () => {
         }
 
         loadCategories()
-
     }, [])
 
     return(

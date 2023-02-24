@@ -7,20 +7,15 @@ import { getEntries } from "../../services/Entries"
 
 const EntryList = ({ onEntryPress, onPressActionButton }) => {
 
-    let entries = []
-
-    async function loadEntries() {
-        const data = await getEntries()
-        data.map(item => {
-            entries.push({
-                id: item.id,
-                amount: item.amount,
-                description: item.description
-            })
-        })
-    }
+    const [entries, setEntries] = useState([])
 
     useEffect(() => {
+
+        async function loadEntries() {
+            const data = await getEntries()
+            setEntries(data)
+        }
+        
         loadEntries()
     }, [])
     
