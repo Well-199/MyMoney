@@ -29,7 +29,8 @@ export const saveEntry = async ( value, entry = {} ) => {
                 id: value.id || entry.id || uuid(),
                 amount: value.amount || entry.amount,
                 entryAt: value.entryAt || entry.entryAt,
-                isInit: false
+                isInit: false,
+                category: value.category || entry.category
             }
             // parametro true sempre checa se os dados existem caso sim atualiza
             realm.create("Entry", data, true)

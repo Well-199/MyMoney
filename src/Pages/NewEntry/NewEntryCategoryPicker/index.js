@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from "react"
 import { View, TouchableOpacity, Text, Modal, FlatList, StyleSheet } from 'react-native'
 
-import { getAllCategories } from "../../../services/Categories"
+import { getDebitCategories, getCreditCategories } from "../../../services/Categories"
 
 import Colors from "../../../styles/Colors"
 
-const NewEntryCategoryPicker = () => {
+const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
 
     const [modalVisible, setModalVisible] = useState(false)
-    const [allCategories, setAllCategories] = useState([])
+    const [debitCategories, setDebitCategories] = useState([])
+    const [creditCategories, setCreditCategories] = useState([])
 
     useEffect(() => {
         async function loadCategories() {
-            const data = await getAllCategories()
-            setAllCategories(data)
+            
+            const dataDebit = await getDebitCategories()
+            const dataCredit = await getCreditCategories()
+
+            setDebitCategories(dataDebit)
+            setCreditCategories(dataCredit)
         }
 
         loadCategories()
     }, [])
+
+    const onClosePress = () => {
+        setModalVisible(false)
+    }
+
+    const onCategoryPress = (item) => {
+        onChangeCategory(item)
+        onClosePress()
+    }
 
     return(
         <View>
@@ -25,7 +39,7 @@ const NewEntryCategoryPicker = () => {
                 style={styles.pickerButton}
                 onPress={() => setModalVisible(true)}
             >
-                <Text style={styles.pickerButtonText}>Alimentação</Text>
+                <Text style={styles.pickerButtonText}>{category.name}</Text>
             </TouchableOpacity>
 
             <Modal
@@ -36,11 +50,13 @@ const NewEntryCategoryPicker = () => {
 
                 <View style={styles.modal}>
                     <FlatList 
-                        data={allCategories}
+                        data={debit ? creditCategories : debitCategories}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <TouchableOpacity
-                                style={styles.modalItem}>
+                                style={styles.modalItem}
+                                onPress={() => onCategoryPress(item)}
+                            >
                                 <Text style={[styles.modalItemText, {color: item.color}]}>
                                     {item.name}
                                 </Text>
@@ -50,9 +66,7 @@ const NewEntryCategoryPicker = () => {
 
                     <TouchableOpacity
                         style={styles.closeButton} 
-                        onPress={() => {
-                            setModalVisible(false)
-                        }}>
+                        onPress={onClosePress}>
                         <Text style={styles.closeButtonText}>Fechar</Text>
                     </TouchableOpacity>
                 </View>

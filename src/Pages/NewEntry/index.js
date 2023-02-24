@@ -15,13 +15,16 @@ const NewEntry = ({ navigation, route }) => {
 
     const defaultParams = {
         id: null,
-        amount: '0.00',
-        entryAt: moment().format()
+        amount: 0,
+        entryAt: moment().format(),
+        category: { id: null, name: 'Selecione' }
     }
 
     const entry = route.params?.entry ?? defaultParams
 
+    const [debit, setDebit] = useState(entry.amount <= 0)
     const [amount, setAmount] = useState(entry.amount)
+    const [category, setCategory] = useState(entry.category)
     
     const isValid = () => {
         if(parseFloat(amount) !== 0){
@@ -32,7 +35,8 @@ const NewEntry = ({ navigation, route }) => {
 
     const onSave = () => {
         const value = {
-            amount: parseFloat(amount)
+            amount: parseFloat(amount),
+            category: category
         }
 
         saveEntry(value, entry)
@@ -55,10 +59,15 @@ const NewEntry = ({ navigation, route }) => {
             <View>
                 <NewEntryInput 
                     value={amount}
+                    onChangeDebit={setDebit}
                     onChangeValue={setAmount}
                 />
 
-                <NewEntryCategoryPicker />
+                <NewEntryCategoryPicker 
+                    debit={debit}
+                    category={category}
+                    onChangeCategory={setCategory}
+                />
 
                 <Button title="GPS" />
                 <Button title="Camera" />
