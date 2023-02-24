@@ -46,9 +46,7 @@ export const InitDB = (realm) => {
         }
         
     }
-    else {
-        console.log('InttDB: categories already existing... Skypping')
-    }
+
 }
 
 // Apaga todo o banco de dados
