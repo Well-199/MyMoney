@@ -25,7 +25,7 @@ const EntryList = ({ onEntryPress, onPressActionButton }) => {
             actionButtonText="Ver mais"
             onPressActionButton={onPressActionButton}
         >
-            
+
             <FlatList
                 data={entries}
                 keyExtractor={item => JSON.stringify(item.id)}
