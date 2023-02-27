@@ -35,7 +35,6 @@ export const InitDB = (realm) => {
             realm.write(() => {
 
                 categories.forEach(category => {
-                    console.table(category)
                     realm.create("Category", category, true)
                 })
 
