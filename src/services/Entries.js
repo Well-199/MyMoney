@@ -9,7 +9,7 @@ export const getEntries = async () => {
     const realm = await getRealm()
 
     // entries armazena os dados da tabela entry retornados do BD
-    const entries = realm.objects('Entry')
+    const entries = realm.objects('Entry').sorted('entryAt', true)
 
     return entries
 }
@@ -29,6 +29,7 @@ export const saveEntry = async ( value, entry = {} ) => {
                 id: value.id || entry.id || uuid(),
                 amount: value.amount || entry.amount,
                 entryAt: value.entryAt || entry.entryAt,
+                description: value.category.name,
                 isInit: false,
                 category: value.category || entry.category
             }

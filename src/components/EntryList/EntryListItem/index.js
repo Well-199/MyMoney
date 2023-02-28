@@ -58,7 +58,7 @@ const EntryListItem = ({ entry, isFirstItem, isLastItem, onEntryPress }) => {
 							size={12} 
 						/>
 						<Text style={styles.entryAtText}>
-							{ moment(entry.entryAt).format('DD/MM/YYYY') }
+							{moment(entry.entryAt).format('DD/MM/YYYY')}
 						</Text>
 						
 						{entry.address && (

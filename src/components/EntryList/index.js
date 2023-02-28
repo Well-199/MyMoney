@@ -7,16 +7,33 @@ import { getEntries } from "../../services/Entries"
 
 const EntryList = ({ onEntryPress, onPressActionButton }) => {
 
-    const [entries, setEntries] = useState([])
+    const entries = []
 
     useEffect(() => {
         async function loadEntries() {
             const data = await getEntries()
-            setEntries(data)
+
+            data.map(item => {
+                entries.push({
+                    id: item.id,
+                    amount: item.amount, 
+                    category: item.category,
+                    address: item.address,
+                    description: item.description,
+                    entryAt: item.entryAt,
+                    isInit: item.isInit,
+                    latitude: item.latitude,
+                    longitude: item.longitude,
+                    photo: item.photo
+                })
+            })
+            
         }
         
         loadEntries()
     }, [])
+
+    console.log(entries)
     
     return(
         <Container 

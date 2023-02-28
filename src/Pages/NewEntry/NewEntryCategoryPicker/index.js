@@ -17,6 +17,8 @@ const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
             const dataDebit = await getDebitCategories()
             const dataCredit = await getCreditCategories()
 
+            console.log(dataCredit)
+
             setDebitCategories(dataDebit)
             setCreditCategories(dataCredit)
         }

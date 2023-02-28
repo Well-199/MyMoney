@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela de Entrada (NewEntry) - Data
+#### Ajustando a Tela de Entrada (NewEntry) - Excluir
 
-#### https://class.devsamurai.com.br/lectures/257
+#### https://class.devsamurai.com.br/lectures/258
