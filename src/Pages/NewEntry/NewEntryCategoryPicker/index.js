@@ -7,24 +7,53 @@ import Colors from "../../../styles/Colors"
 
 const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
 
+    console.log(debit)
+
     const [modalVisible, setModalVisible] = useState(false)
-    const [debitCategories, setDebitCategories] = useState([])
-    const [creditCategories, setCreditCategories] = useState([])
+    const debitCategories = []
+    const creditCategories = []
 
     useEffect(() => {
+
         async function loadCategories() {
             
             const dataDebit = await getDebitCategories()
             const dataCredit = await getCreditCategories()
-
-            console.log(dataCredit)
-
-            setDebitCategories(dataDebit)
-            setCreditCategories(dataCredit)
+    
+            dataDebit.map(item => {
+                debitCategories.push({
+                    id: item.id,
+                    name: item.name,
+                    color: item.color,
+                    isInit: item.isInit,
+                    isDefault: item.isDefault,
+                    isCredit: item.isCredit,
+                    isDebit: item.isDebit,
+                    order: item.order,
+                    entries: item.entries
+                })
+            })
+    
+            dataCredit.map(item => {
+                creditCategories.push({
+                    id: item.id,
+                    name: item.name,
+                    color: item.color,
+                    isInit: item.isInit,
+                    isDefault: item.isDefault,
+                    isCredit: item.isCredit,
+                    isDebit: item.isDebit,
+                    order: item.order,
+                    entries: item.entries
+                })
+            })
+    
+            //setDebitCategories(dataDebit)
+            //setCreditCategories(dataCredit)
         }
-
+        
         loadCategories()
-    }, [])
+    }, [modalVisible])
 
     const onClosePress = () => {
         setModalVisible(false)
@@ -52,7 +81,7 @@ const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
 
                 <View style={styles.modal}>
                     <FlatList 
-                        data={debit ? creditCategories : debitCategories}
+                        data={ debit ? debitCategories : creditCategories }
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <TouchableOpacity
