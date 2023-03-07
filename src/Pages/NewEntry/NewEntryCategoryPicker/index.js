@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { View, TouchableOpacity, Text, Modal, FlatList, StyleSheet } from 'react-native'
 
+import ActionFooter from "../../../components/Core/ActionFooter"
+import { ActionPrimaryButton } from "../../../components/Core/ActionFooter"
+
 import { getDebitCategories, getCreditCategories } from "../../../services/Categories"
 
 import Colors from "../../../styles/Colors"
 
 const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
-
-    console.log(debit)
 
     const [modalVisible, setModalVisible] = useState(false)
     const debitCategories = []
@@ -95,11 +96,12 @@ const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
                         )}
                     />
 
-                    <TouchableOpacity
-                        style={styles.closeButton} 
-                        onPress={onClosePress}>
-                        <Text style={styles.closeButtonText}>Fechar</Text>
-                    </TouchableOpacity>
+                    <ActionFooter>
+                        <ActionPrimaryButton 
+                            title="Fechar"
+                            onPress={onClosePress}
+                        />
+                    </ActionFooter>
                 </View>
             </Modal>
         </View>
@@ -139,25 +141,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
         textAlign: 'center',
         color: Colors.white
-    },
-
-    closeButton: {
-        paddingVertical: 10,
-        paddingHorizontal: 25,
-        borderWidth: 1,
-        alignSelf: 'center',
-        borderRadius: 15,
-        marginVertical: 10,
-        marginHorizontal: 20,
-        backgroundColor: Colors.background,
-        borderColor: Colors.green,
-        marginBottom: 20,
-    },
-
-    closeButtonText: {
-        fontSize: 20,
-        textAlign: 'center',
-        color: Colors.green,
     }
 
 })

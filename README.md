@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela de Entrada (NewEntry) - Botões de Ação
+#### O que é uma camada de negócio
 
-#### https://class.devsamurai.com.br/lectures/259
+#### https://class.devsamurai.com.br/lectures/265

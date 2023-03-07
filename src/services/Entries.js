@@ -49,17 +49,22 @@ export const saveEntry = async ( value, entry = {} ) => {
 }
 
 export const deleteEntry = async (entry) => {
-    // Inicia a conexão com o banco
     const realm = await getRealm()
 
-    console.log(entry)
-
+    // Busca o objeto que vai ser excluido
+    const findObject = realm.objectForPrimaryKey("Entry", entry.id)
+  
     try {
+
         realm.write(() => {
-            realm.delete(entry)
+            // passa como parametro do delete o objeto retornado na busca
+            realm.delete(findObject)
         })
+
     } catch (error) {
-        console.error("deleteEntry: ", error)
-        Alert.alert("Erro ao excluir lançamento")
+
+        console.log(error)
+        Alert.alert('Erro ao excluir este lançamento.')
+        
     }
 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { View, TextInput, Button, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
-import moment from "moment"
+import ActionFooter from "../../components/Core/ActionFooter"
+import { ActionPrimaryButton, ActionSecodaryButton } from "../../components/Core/ActionFooter"
 
 import BalanceLabel from "../../components/BalanceLabel"
 import NewEntryInput from "./NewEntryInput"
@@ -12,6 +13,8 @@ import NewEntryDeleteAction from "./NewEntryDeleteAction"
 import { saveEntry, deleteEntry } from "../../services/Entries"
 
 import Colors from "../../styles/Colors"
+
+import moment from "moment"
 
 const NewEntry = ({ navigation, route }) => {
 
@@ -87,19 +90,18 @@ const NewEntry = ({ navigation, route }) => {
 
             </View>
 
-            <View>
-                <Button 
-                    title="Adicionar" 
+            <ActionFooter>
+                <ActionPrimaryButton 
+                    title={ entry.id ? "Salvar" : "Adicionar" }
                     onPress={() => {
                         isValid() && onSave()
                     }}
                 />
-                
-                <Button 
+                <ActionSecodaryButton 
                     title="Cancelar"
                     onPress={onClose} 
                 />
-            </View>
+            </ActionFooter>
         </View>
     )
 }
