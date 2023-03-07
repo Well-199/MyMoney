@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
 
     panel: {
-        paddingVertical: 10,
+        paddingVertical: 10
     },
 
     button: {

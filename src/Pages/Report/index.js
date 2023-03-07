@@ -1,45 +1,43 @@
 import React from 'react'
-import { View, Button, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
+
+import ActionFooter from '../../components/Core/ActionFooter'
+import { ActionPrimaryButton } from '../../components/Core/ActionFooter'
 
 import BalanceLabel from '../../components/BalanceLabel'
 import EntrySummary from '../../components/EntrySummary'
 import EntryList from '../../components/EntryList'
 
+import Colors from '../../styles/Colors'
+
 const Report = ({ navigation }) =>  {
 
-    const currentBalance = 2064.34
-
     return (
-        <View>
-            <BalanceLabel currentBalance={currentBalance} />
-
-            <Picker
-                selectedValue={''}
-                onValueChange={(itemValue, itemIndex) =>
-                setSelectedLanguage(itemValue)
-            }>
-                <Picker.Item label="Todas as Categorias" value="Todas" />
-            </Picker>
-
-            <Picker
-                selectedValue={''}
-                onValueChange={(itemValue, itemIndex) =>
-                setSelectedLanguage(itemValue)
-            }>
-                <Picker.Item label="Últimos 7 dias" value="7dias" />
-            </Picker>
-
-            <EntrySummary />
-            <EntryList />
+        <View style={styles.container}>
+            <BalanceLabel />
 
             <View>
-                <Button title='Salvar'/>
-                <Button 
-                    title='Fechar' 
+                <Picker>
+                    <Picker.Item label="Todas as Categorias" value="Todas" />
+                </Picker>
+
+                <Picker>
+                    <Picker.Item label="Últimos 7 dias" value="7dias" />
+                </Picker>
+            </View>
+
+            <ScrollView>
+                <EntrySummary />
+                <EntryList />
+            </ScrollView>
+
+            <ActionFooter>
+                <ActionPrimaryButton 
+                    title="Fechar"
                     onPress={() => navigation.goBack()}
                 />
-            </View>
+            </ActionFooter>
         </View>
     )
 
@@ -48,7 +46,8 @@ const Report = ({ navigation }) =>  {
 const styles = StyleSheet.create({
 
     container: {
-        // flex: 1,
+        flex: 1,
+        backgroundColor: Colors.background
     }
 
 })

@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### O que é uma camada de negócio
+#### Ajustando a Tela de Relatório (Report) - Filtro de Data - Parte 1
 
-#### https://class.devsamurai.com.br/lectures/265
+#### https://class.devsamurai.com.br/lectures/261
