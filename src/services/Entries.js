@@ -52,6 +52,8 @@ export const deleteEntry = async (entry) => {
     // Inicia a conexão com o banco
     const realm = await getRealm()
 
+    console.log(entry)
+
     try {
         realm.write(() => {
             realm.delete(entry)

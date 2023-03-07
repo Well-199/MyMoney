@@ -7,6 +7,7 @@ import BalanceLabel from "../../components/BalanceLabel"
 import NewEntryInput from "./NewEntryInput"
 import NewEntryCategoryPicker from "./NewEntryCategoryPicker"
 import NewEntryDatePicker from "./NewEntryDatePicker"
+import NewEntryDeleteAction from "./NewEntryDeleteAction"
 
 import { saveEntry, deleteEntry } from "../../services/Entries"
 
@@ -77,6 +78,11 @@ const NewEntry = ({ navigation, route }) => {
                         value={entryAt}
                         onChange={setEntryAt}
                     />
+
+                    <NewEntryDeleteAction 
+                        entry={entry}
+                        onOkPress={onDelete}
+                    />
                 </View>
 
             </View>
@@ -88,10 +94,7 @@ const NewEntry = ({ navigation, route }) => {
                         isValid() && onSave()
                     }}
                 />
-                <Button 
-                    title="Excluir" 
-                    onPress={onDelete}
-                />
+                
                 <Button 
                     title="Cancelar"
                     onPress={onClose} 
@@ -116,8 +119,8 @@ const styles = StyleSheet.create({
 
     formActionContainer: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        marginVertical: 10
+        justifyContent: 'space-around',
+        marginVertical: 10,
     }
 
 })

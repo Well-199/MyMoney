@@ -2,6 +2,6 @@
 
 #### npx react-native run-android
 
-#### Ajustando a Tela de Entrada (NewEntry) - Excluir
+#### Ajustando a Tela de Entrada (NewEntry) - Botões de Ação
 
-#### https://class.devsamurai.com.br/lectures/258
+#### https://class.devsamurai.com.br/lectures/259
